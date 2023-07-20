@@ -12,6 +12,8 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
+      DOCKERHUB_REPO:
+        required: true
 
 jobs:
   docker:
@@ -21,7 +23,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: com-a/docker-tmpl-python
+          repository: bk-game/docker-php
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -45,6 +47,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:latest
           
         
